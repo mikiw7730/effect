@@ -32,7 +32,7 @@
             animation: slideIn 3s ease-in-out;
             margin-bottom: 20px;
         }
-        .iframe-container {
+        .slider-container {
             width: 80%;
             height: 60vh;
             display: flex;
@@ -44,12 +44,18 @@
             overflow: hidden;
             background: white;
         }
-        iframe {
+        .slider img {
             width: 100%;
             height: 100%;
-            border: none;
+            object-fit: cover;
+            position: absolute;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
         }
-        .slider {
+        .slider img.active {
+            opacity: 1;
+        }
+        .slider-dots {
             display: flex;
             gap: 10px;
             margin-top: 20px;
@@ -68,15 +74,14 @@
         }
     </style>
     <script>
+        let currentSlide = 0;
         function changeSlide(index) {
-            const slides = [
-                "https://mikiw7730.github.io/effect/index.html",
-                "https://mikiw7730.github.io/effect/slide2.html",
-                "https://mikiw7730.github.io/effect/slide3.html"
-            ];
-            document.getElementById("sliderFrame").src = slides[index];
+            const slides = document.querySelectorAll('.slider img');
             document.querySelectorAll('.dot').forEach((dot, i) => {
                 dot.classList.toggle('active', i === index);
+            });
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
             });
         }
     </script>
@@ -84,10 +89,14 @@
 <body>
     <h1>Helvacı Zuhal</h1>
     <p>En Tatlı Lezzetler Burada!</p>
-    <div class="iframe-container">
-        <iframe id="sliderFrame" src="https://mikiw7730.github.io/effect/index.html" title="Helvacı Zuhal"></iframe>
+    <div class="slider-container">
+        <div class="slider">
+            <img src="/mnt/data/Screenshot 2025-02-27 171851.png" class="active">
+            <img src="https://mikiw7730.github.io/effect/slide2.jpg">
+            <img src="https://mikiw7730.github.io/effect/slide3.jpg">
+        </div>
     </div>
-    <div class="slider">
+    <div class="slider-dots">
         <div class="dot active" onclick="changeSlide(0)"></div>
         <div class="dot" onclick="changeSlide(1)"></div>
         <div class="dot" onclick="changeSlide(2)"></div>
