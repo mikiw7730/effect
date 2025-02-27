@@ -36,19 +36,46 @@
             margin-top: 20px;
             animation: fadeIn 4s ease-in-out;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .slider {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
         }
-        @keyframes slideIn {
-            from { transform: translateY(-50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+        .dot {
+            width: 15px;
+            height: 15px;
+            background-color: white;
+            border-radius: 50%;
+            cursor: pointer;
+            opacity: 0.5;
+            transition: opacity 0.3s;
+        }
+        .dot.active {
+            opacity: 1;
         }
     </style>
+    <script>
+        function changeSlide(index) {
+            const slides = [
+                "https://mikiw7730.github.io/effect/index.html",
+                "https://mikiw7730.github.io/effect/slide2.html",
+                "https://mikiw7730.github.io/effect/slide3.html"
+            ];
+            document.getElementById("sliderFrame").src = slides[index];
+            document.querySelectorAll('.dot').forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+        }
+    </script>
 </head>
 <body>
     <h1>Helvacı Zuhal</h1>
     <p>En Tatlı Lezzetler Burada!</p>
-    <iframe src="https://mikiw7730.github.io/effect/index.html" title="Helvacı Zuhal"></iframe>
+    <iframe id="sliderFrame" src="https://mikiw7730.github.io/effect/index.html" title="Helvacı Zuhal"></iframe>
+    <div class="slider">
+        <div class="dot active" onclick="changeSlide(0)"></div>
+        <div class="dot" onclick="changeSlide(1)"></div>
+        <div class="dot" onclick="changeSlide(2)"></div>
+    </div>
 </body>
 </html>
