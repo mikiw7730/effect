@@ -32,14 +32,6 @@
             animation: slideIn 3s ease-in-out;
             margin-bottom: 20px;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes slideIn {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
         .slider-container {
             width: 80%;
             height: 60vh;
@@ -81,15 +73,27 @@
             opacity: 1;
         }
     </style>
+    <script>
+        let currentSlide = 0;
+        function changeSlide(index) {
+            const slides = document.querySelectorAll('.slider img');
+            document.querySelectorAll('.dot').forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+        }
+    </script>
 </head>
 <body>
     <h1>Helvacı Zuhal</h1>
     <p>En Tatlı Lezzetler Burada!</p>
     <div class="slider-container">
         <div class="slider">
-            <img src="./images/slide1.jpg" class="active">
-            <img src="./images/slide2.jpg">
-            <img src="./images/slide3.jpg">
+            <img src="https://raw.githubusercontent.com/mikiw7730/images-/main/Screenshot%202025-02-27%20172450.png" class="active">
+            <img src="https://mikiw7730.github.io/effect/slide2.jpg">
+            <img src="https://mikiw7730.github.io/effect/slide3.jpg">
         </div>
     </div>
     <div class="slider-dots">
@@ -97,33 +101,6 @@
         <div class="dot" onclick="changeSlide(1)"></div>
         <div class="dot" onclick="changeSlide(2)"></div>
     </div>
-
-    <script>
-        let currentSlide = 0;
-        const totalSlides = document.querySelectorAll('.slider img').length;
-        
-        function changeSlide(index) {
-            currentSlide = index;
-            const slides = document.querySelectorAll('.slider img');
-            const dots = document.querySelectorAll('.dot');
-            
-            slides.forEach((slide, i) => {
-                slide.classList.toggle('active', i === index);
-            });
-            
-            dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === index);
-            });
-        }
-        
-        // Otomatik slider için
-        function autoSlide() {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            changeSlide(currentSlide);
-        }
-        
-        // 5 saniyede bir otomatik değiştir
-        setInterval(autoSlide, 5000);
-    </script>
 </body>
 </html>
+
