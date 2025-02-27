@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helvacı Zuhal</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+        
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        h1 {
+            font-size: 3em;
+            animation: fadeIn 2s ease-in-out;
+        }
+        p {
+            font-size: 1.5em;
+            animation: slideIn 3s ease-in-out;
+        }
+        iframe {
+            width: 80%;
+            height: 60vh;
+            border: none;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+            margin-top: 20px;
+            animation: fadeIn 4s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <h1>Helvacı Zuhal</h1>
+    <p>En Tatlı Lezzetler Burada!</p>
+    <iframe src="https://mikiw7730.github.io/oyun/" title="Helvacı Zuhal"></iframe>
+</body>
+</html>
